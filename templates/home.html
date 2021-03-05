@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<h1></h1>
+{% block base_head %}
+<link rel="stylesheet" href="{% static 'css/main.css'  %}"> 
+{% endblock %}
+<style>
+  
+  body{
+     
+    background-image: url("http://tasteofindiaabq.com/wp-content/uploads/2014/05/theibizacatering_slide01.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+
+</style>
+
+
+<!-- <img class="image" src="{% static 'img/back.jpg' %}"  alt="My image"> -->
+
+
+<!-- p style="text-align:center">Center this text!</p> -->
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Damion" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Homemade+Apple" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bowlby+One+SC" />
+
+<div class='row'>
+ <div class='col'>
+  
+  <h1 style="font-family:Pacifico;text-align:center;padding-top:300px;color:#FFB607;">Welcome</h1>
+  <!-- <image src="https://media.giphy.com/media/Y0gm7aFR2ox5IGFtrD/giphy.gif" style="align:center;height:80px; width: 60px;"/> -->
+  <h1 style="font-family:'Arial Black';text-align:center;color:#ffffff;">JUGHEAD AT YOUR SERVICE</h1>
+  
+  <hr class="beautiful-line" style="border-top: 2px solid white; width:300px;">
+  <p style="text-align:center;font-family:Franklin Gothic Medium;font-weight:bold;color:white">YOUR WAY, RIGHT AWAY</p>
+   
+ </div>
+</div>
+
+{% if request.user.is_authenticated %}
+<div class='row'>
+ <div class='col'>
+   <p></p>
+ </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css'  %}">
+    <title>Jughead</title>
+  </head>
+  <body>
+     
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

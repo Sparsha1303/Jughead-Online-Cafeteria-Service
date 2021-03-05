@@ -1,0 +1,87 @@
+{% url 'home' as home_url %}
+{% url 'contact' as contact_url %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% url 'cafeterias:list' as tango_products_url %}
+{% url 'register' as register_url %}
+{% url 'cafeterias:list2' as udupi_products_url %}
+{% url 'cafeterias:list3' as munch_products_url %}
+{% url 'carts:udupi_cart' as udupi_url %}
+{% url 'carts:tango_cart' as tango_cart %}
+{% url 'carts:munch_cart' as munch_cart %}
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark mb-3"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+
+  <div class="container">
+  <nav class="navbar navbar-light" >
+    <a class="navbar-brand" href="#">
+      <img src="https://media.giphy.com/media/J5GzKNa4GgxOYoecyJ/giphy.gif" width="50" height="60" class="d-inline-block align-centre" alt="" loading="lazy">
+        Jughead
+    </a>
+  </nav>
+    <a class="navbar-brand" href="{{ home_url }}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {% if request.path == home_url %} active {% endif %}">
+          <a class="nav-link  " href="{{ home_url }}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item {% if request.path == contact_url %} active {% endif %}">
+          <a class="nav-link " href="{{contact_url}}">Contact</a>
+        </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item {% if request.path == logout_url %} active {% endif %}">
+              <a class="nav-link " href="{{logout_url}}">Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item {% if request.path == register_url  %} active {% endif %}">
+            <a class="nav-link " href="{{ register_url }}">Register</a>
+          </li>
+          
+          <li class="nav-item {% if request.path == login_url %} active {% endif %}">
+              <a class="nav-link " href="{{login_url}}">Login</a>
+          </li>
+        {% endif %}
+        
+   
+        <li class="nav-item dropdown {% if request.path == tango_products_url or request.path == udupi_products_url or request.path == munch_products_url %} active {% endif %}">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cafeterias
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{udupi_products_url}}">Udupi</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{tango_products_url}}">Tango</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{munch_products_url}}">Munch</a>
+          </div>
+        </li>
+      
+        <li class="nav-item {% if 'udupi' in request.path %}{% url 'carts:udupi_cart' as cart_url %}{% elif 'tango' in request.path %}{% url 'carts:tango_cart' as cart_url %}{% elif  'munch' in request.path %} {% url 'carts:munch_cart' as cart_url %} active {% endif %} ">
+          <!-- <h1>{{request.path}}</h1> -->
+          <a class="nav-link " href="{{ cart_url }}"><span class='navbar-cart-count'>{{request.session.cart_items}}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          <!-- {% if  'udupi' in request.path or  '/cafeterias/udupi/' in request.path %} 
+            <a class="nav-link " href="{{ udupi_cart }}"><span class='navbar-cart-count'>{{request.session.cart_items}}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          {% elif  'tango' in request.path or  '/cafeterias/tango/' in request.path %}
+            <a class="nav-link " href="{{ tango_cart }}"><span class='navbar-cart-count'>{{request.session.cart_items}}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          {% elif  'munch' in request.path or  '/cafeterias/munch/' in request.path %}
+            <a class="nav-link " href="{{ munch_cart }}"><span class='navbar-cart-count'>{{request.session.cart_items}}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          {% else %}
+          
+            <a class="nav-link " href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          {% endif %} -->
+        </li>
+        
+        <!-- <li class="nav-item {% if request.path == products_url %} active {% endif %}">
+          <a class="nav-link" href="{{products_url}}" tabindex="-1" aria-disabled="true">Products</a>
+        </li> -->
+      </ul>
+      {% include 'search/snippet/search-form.html' %}
+    </div>
+    </div>
+  </nav>

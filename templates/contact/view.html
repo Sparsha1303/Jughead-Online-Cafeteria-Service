@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
+<div class='text-center' style = "color:#404040 ;padding-top:30px;font-family:Lobster;">
+  <h1>{{title}}</h1>
+</div>
+<style>
+  body{
+      background-image: url('https://d39l2hkdp2esp1.cloudfront.net/img/photo/140991/140991_00_2x.jpg?20180302040152');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+<div class = 'container'>
+<div class='row'>
+<div class='col'>
+  <div class='text-center mt-3' >
+    <p style="color:black;">{{content}}</p>
+  </div>
+<div class="row d-flex justify-content-center">
+  <div class='col-md-6 col-12 mx-auto'>
+  <form class='contact-form' method='POST' action='{% url "contact" %}'>{% csrf_token %}
+      {{ form.as_p }}
+      <button type='submit' class='btn btn-outline-info mt-3'>Submit</button>
+  </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+
